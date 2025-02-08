@@ -1,3 +1,4 @@
-cd C:\Users\Administrator\Desktop\Projeto ViolênciaSP\myenv\Scripts
+cd C:\Users\Administrator\Desktop\Projeto ViolenciaSP\myenv\Scripts
 
 activate
+
