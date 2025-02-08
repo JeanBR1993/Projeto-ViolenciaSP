@@ -1,0 +1,3 @@
+cd C:\Users\Administrator\Desktop\Projeto ViolênciaSP\myenv\Scripts
+
+activate
