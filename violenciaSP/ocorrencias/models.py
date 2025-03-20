@@ -17,23 +17,36 @@ class Crime(models.Model):
     def __str__(self):
         return self.nome
 
-class DadosBoletim(models.Model):
+class Mes(models.Model):
 
+    #Está "Marco" primeiro porque as tabelas excel estão sem ç.
     MESES = (
-        ("Jan","Janeiro"),
-        ("Fev","Feveireiro"),
-        ("Mar","Março"),
-        ("Abr","Abril"),
-        ("Mai","Maio"),
-        ("Jun","Junho"),
-        ("Jul","Julho"),
-        ("Ago","Agosto"),
-        ("Set","Setembro"),
-        ("Out","Outubro"),
-        ("Nov","Novembro"),
-        ("Dez","Dezembro")
+        ("Janeiro","Janeiro"),
+        ("Feveireiro","Feveireiro"),
+        ("Marco", "Marco"),
+        ("Abril","Abril"),
+        ("Maio","Maio"),
+        ("Junho","Junho"),
+        ("Julho","Julho"),
+        ("Agosto","Agosto"),
+        ("Setembro","Setembro"),
+        ("Outubro","Outubro"),
+        ("Novembro","Novembro"),
+        ("Dezembro","Dezembro")
     )
 
+
+    nome = models.CharField(
+        choices = MESES,
+        max_length=20
+    )
+
+    def __str__(self):
+        return self.nome
+
+
+
+class DadosBoletim(models.Model):
 
     ano = models.IntegerField(
         validators=[
@@ -42,11 +55,7 @@ class DadosBoletim(models.Model):
         ]
     )
 
-    mes = models.CharField(
-        max_length=3,
-        choices=MESES
-    )
-
+    mes = models.ForeignKey(Mes, on_delete=models.PROTECT)
     crime = models.ForeignKey(Crime, on_delete=models.PROTECT)
     delegacia = models.ForeignKey(Delegacia, on_delete=models.PROTECT)
 
