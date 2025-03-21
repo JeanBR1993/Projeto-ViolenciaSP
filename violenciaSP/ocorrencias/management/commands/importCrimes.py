@@ -58,7 +58,7 @@ class Command(BaseCommand):
               r"C:\Users\Administrator\Desktop\Projeto ViolenciaSP\violenciaSP\dadosNCrimes\2024",
               r"C:\Users\Administrator\Desktop\Projeto ViolenciaSP\violenciaSP\dadosNCrimes\2025"]
         
-        for path in paths:
+        for path in diretorios:
             self.stdout.write(self.style.SUCCESS(f'Scanning directory: {path}'))
 
             if not os.path.exists(path):
@@ -68,3 +68,8 @@ class Command(BaseCommand):
             if not os.path.isdir(path):
                 self.stdout.write(self.style.ERROR(f'Not a directory: {path}'))
                 continue
+
+            for root, dirs, files in os.walk(path):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    self.stdout.write(f'Found file: {file_path}')
