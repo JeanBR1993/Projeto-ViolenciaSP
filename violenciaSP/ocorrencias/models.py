@@ -59,7 +59,7 @@ class DadosBoletim(models.Model):
     crime = models.ForeignKey(Crime, on_delete=models.PROTECT)
     delegacia = models.ForeignKey(Delegacia, on_delete=models.PROTECT)
 
-    nCrimes = models.PositiveIntegerField()
+    nCrimes = models.PositiveIntegerField(blank=True, null=True)
 
     def __str__(self):
         return str(self.delegacia) + " - " + str(self.crime) + " - " + str(self.mes) + "/" +str(self.ano)
